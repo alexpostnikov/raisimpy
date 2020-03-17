@@ -421,6 +421,8 @@ void init_visualizer(py::module &m) {
         )mydelimiter")
 
       .def("close_app", &raisim::OgreVis::closeApp, "This function closes down the application - saves the configuration then shutdowns.")
+      .def("hideWindow", &raisim::OgreVis::hideWindow, "-.")
+      .def("showWindow", &raisim::OgreVis::showWindow, "-.")
 
 //        .def("get", &raisim::OgreVis::get, R"mydelimiter(
 //        Return a pointer to the singleton visualizer.
@@ -848,7 +850,9 @@ void init_visualizer(py::module &m) {
 
         Returns:
             dict[str:VisualObject]: dictionary mapping names to visual objects.
-        )mydelimiter")
+        )mydelimiter",
+        py::return_value_policy::reference
+        )
 
 
       .def("set_contact_visual_object_size", &raisim::OgreVis::setContactVisObjectSize, R"mydelimiter(
